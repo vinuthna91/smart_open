@@ -69,7 +69,7 @@ def write_avro(foutd):
     writer = avro.datafile.DataFileWriter(foutd, avro.io.DatumWriter(), schema)
     for ll, row in enumerate(dictRes):
         writer.append(row)
-
+    #writer.close() #This does not work while using smart_open and when enabled makes a significant change to local.avro file and is required
 
 with open('local.avro', 'wb') as foutd:
     logging.critical('writing to %r', foutd)
